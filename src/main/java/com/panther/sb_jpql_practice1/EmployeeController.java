@@ -31,45 +31,57 @@ public class EmployeeController {
 		return empRepo.findAll(Sort.by("name"));
 	}
 	
+	@RequestMapping("/byname/{name}")
 	public List<Employee> byname(@PathVariable String name){
 		return empRepo.findByName(name);
 	}
 	
+	@RequestMapping("/byage/{age}")
 	public List<Employee> byage(@PathVariable int age){
 		return empRepo.findByAge(age);
 	}
 	
+	@RequestMapping("/byid/{id}")
 	public Optional<Employee> byid(@PathVariable Long id){
 		return empRepo.findById(id);
 	}
 	
+	@RequestMapping("/bycity/{city}")
 	public List<Employee> bycity(@PathVariable String city){
 		return empRepo.findByCity(city);
 	}
 	
+	@RequestMapping("/bycountry/{country}")
 	public List<Employee> bycountry(@PathVariable String country){
 		return empRepo.findByCountry(country);
 	}
 	
 	//two column
-	
+	@RequestMapping("/bycityandcountry/{city}{country}")
 	public List<Employee> bycitybycountry(@PathVariable String city, @PathVariable String country){
 		return empRepo.findByCityOrCountry(city,country);
 	}
 	
 	//custom
-	
+	@RequestMapping("/bynamecustom/{name}")
 	public List<Employee> bynamecontains(@PathVariable String name){
 		return empRepo.findByNameContaining(name);
 	}
 	
+	@RequestMapping("/bycitycustom/{city}")
 	public List<Employee> getallemp(@PathVariable String city){
 		return empRepo.findEmployeeByCity(city);
 	}
 	
+	@RequestMapping("/bycityandcountry/{city}{country}")
 	public List<Employee> getallempbycityandcountry(String city, String country){
 		return empRepo.getEmployeeByCityAndCountry(city, country);
 	}
 	
+//	Native Query
+	@GetMapping("/native/byname/{name}")
+	public List<Employee> getnativebyname(@PathVariable String name){
+		return empRepo.findByNameNative(name);
+	}
 	
 }
