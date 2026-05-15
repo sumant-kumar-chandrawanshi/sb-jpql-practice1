@@ -1,5 +1,6 @@
 package com.panther.sb_jpql_practice1;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotNull()
+	@Column(nullable = false)
 	private String name;
 	@Email()
 	private String email;
