@@ -57,7 +57,7 @@ public class EmployeeController {
 	}
 	
 	//two column
-	@RequestMapping("/bycityandcountry/{city}{country}")
+	@RequestMapping("/bycityandcountry")
 	public List<Employee> bycitybycountry(@PathVariable String city, @PathVariable String country){
 		return empRepo.findByCityOrCountry(city,country);
 	}
@@ -73,15 +73,15 @@ public class EmployeeController {
 		return empRepo.findEmployeeByCity(city);
 	}
 	
-	@RequestMapping("/bycityandcountry/{city}{country}")
+	@RequestMapping("/bycityandcountrycustom")
 	public List<Employee> getallempbycityandcountry(String city, String country){
 		return empRepo.getEmployeeByCityAndCountry(city, country);
 	}
 	
 //	Native Query
-	@GetMapping("/native/byname/{name}")
-	public List<Employee> getnativebyname(@PathVariable String name){
-		return empRepo.findByNameNative(name);
-	}
+//	@GetMapping("/native/byname/{name}")
+//	public List<Employee> getnativebyname(@PathVariable String name){
+//		return empRepo.findByNameNative(name);
+//	}
 	
 }
